@@ -93,7 +93,7 @@ services:
 
   stream-enrich:
     container_name: stream-enrich
-    image: snowplow/stream-enrich-nsq:0.19.0
+    image: snowplow/stream-enrich-nsq:2.0.5
     command: [
       "--config", "/snowplow/config/stream-enrich.hocon",
       "--resolver", "file:/snowplow/config/resolver.json",
@@ -107,7 +107,7 @@ services:
     volumes:
       - ./config:/snowplow/config
     environment:
-      - "SP_JAVA_OPTS=-Xms256m -Xmx256m"
+      - "JAVA_OPTS=-Dorg.slf4j.simpleLogger.defaultLogLevel=debug"
 
   elasticsearch-loader-good:
     container_name: elasticsearch-loader-good
